@@ -23,16 +23,5 @@ module Logs
       data = REDIS.get key
       self.new_from_json data
     end
-
-    def self.to_server(server_name, data={})
-      data = {
-        branch: 'foobar',
-        datetime: DateTime.now,
-        sha: "123",
-        diff_master: ["123", "124"]
-      }
-
-      REDIS.set "chuck:servers:#{server_name}", data.to_json
-    end
   end
 end
