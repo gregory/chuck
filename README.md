@@ -1,16 +1,30 @@
-[![Analytics](https://ga-beacon.appspot.com/UA-34823890-2/sinatra-boilerplate/readme?pixel)](https://github.com/gregory/sinatra-boilerplate)
-# Sinatra base structure
+# Sinatra quick and dirty app to track where you've deployed your branches
 
-Just wanted to get a base skelet for my sinatra apps inspired by the rails folder architecture
-I've set it up with this concepts:
+Here is what you should add to your deploy.rb
 
-* mvc architecture
-* modular (check config.ru)
-* rails assets pipline style
-* capybara + minitest
+    before "deploy",              "log:deploy"
 
+    require 'redis'
+    require 'json'
 
-Nothing fancy here :)
+    REDIS = Redis.new(host: "localhost", port: 6379, db: 0)
+
+    namespace :log do
+      desc "Log the deploy"
+      task :deploy do
+        branch_name = ``git rev-parse --abbrev-ref HEAD``.strip
+        diff_master = ``git log master..#{branch_name}``.gsub(/\e\[[0-9]{0,2}m*/, '').split(/\n/)
+        developer   = ``git config user.name``.strip
+
+        data = {
+          branch: branch_name,
+          datetime: DateTime.now,
+          sha: `git rev-parse HEAD`.strip,
+          diff_master: diff_master
+        }
+        REDIS.set "chuck:servers:#{developer}", data.to_json
+      end
+    end
 
 ## Contributing
 

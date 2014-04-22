@@ -1,1 +1,18 @@
-h1 Hello World
+h1 Deployment logs
+div
+  ul
+    - @deploys.each do |redis_key, deploy|
+      li
+        ul
+          li
+            a target='_blank' href=Presenters::Logs::Deploy.server_url(redis_key) =Presenters::Logs::Deploy.server_url(redis_key)
+          li
+            a target='_blank' href=Presenters::Logs::Deploy.github_url(deploy.branch) =deploy.branch
+          li=deploy.datetime
+          li
+            a target='_blank' href=Presenters::Logs::Deploy.commit_url(deploy.sha) =deploy.sha
+          li
+            ul
+              -deploy.diff_master.each do |diff|
+                li=diff
+

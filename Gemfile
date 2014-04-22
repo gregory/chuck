@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 ruby '1.9.3'
 
 gem 'sinatra', '~> 1.4.4'
 gem 'slim'
 gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
+gem 'redis'
+  gem 'rails-assets-bootstrap'
 
 group :development do
   gem 'shotgun'
+  gem 'pry'
+  gem 'pry-debugger'
 end
 
 group :test do

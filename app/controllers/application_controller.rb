@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   set :views, [(File.dirname(__FILE__)+ '/../views'), (File.dirname(__FILE__) + '/../../public') ]
   set :assets_css_compressor, :sass
   set :assets_js_compressor, :uglifier
-  set :assets_prefix, %w{app/assets}
+  set :assets_prefix, %w{app/assets vendor/assets}
   set :slim, layout: :"layouts/application", pretty: true, disable_escape: true
 
   not_found{ slim :'404' }
@@ -17,8 +17,4 @@ class ApplicationController < Sinatra::Base
   register Sinatra::AssetPipeline
 
   helpers ApplicationHelper
-
-  get '/' do
-    slim :index
-  end
 end

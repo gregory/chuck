@@ -17,6 +17,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
     execjs (2.0.2)
     ffi (1.9.3)
     formatador (0.2.4)
@@ -47,15 +54,22 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-debugger (0.2.2)
+      debugger (~> 1.3)
+      pry (~> 0.9.10)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rails-assets-bootstrap (3.1.1)
+      rails-assets-jquery (>= 1.9.0)
+    rails-assets-jquery (2.1.0)
     rake (10.1.1)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
+    redis (3.0.7)
     sass (3.2.13)
     shotgun (0.9)
       rack (>= 1.0)
@@ -104,7 +118,10 @@ DEPENDENCIES
   guard-minitest
   minitest (~> 5.2.0)
   pry
+  pry-debugger
+  rails-assets-bootstrap
   rake
+  redis
   sass
   shotgun
   sinatra (~> 1.4.4)
