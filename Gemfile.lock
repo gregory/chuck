@@ -39,6 +39,8 @@ GEM
       minitest (>= 2.1)
     hike (1.2.3)
     json (1.8.1)
+    kgio (2.9.2)
+    libv8 (3.16.14.3)
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -46,11 +48,15 @@ GEM
     lumberjack (1.0.4)
     method_source (0.8.2)
     mime-types (2.0)
+    mina (0.3.0)
+      open4
+      rake
     mini_portile (0.5.2)
     minitest (5.2.0)
     multi_json (1.8.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    open4 (1.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -63,11 +69,13 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.13.0)
     rake (10.1.1)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
     redis (3.0.7)
+    ref (1.0.5)
     sass (3.2.13)
     shotgun (0.9)
       rack (>= 1.0)
@@ -105,12 +113,19 @@ GEM
       sprockets (~> 2.0)
       tilt (~> 1.1)
     temple (0.6.7)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.18.1)
     tilt (1.4.1)
     timers (1.1.0)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -119,8 +134,10 @@ PLATFORMS
 
 DEPENDENCIES
   capybara_minitest_spec
+  execjs
   guard
   guard-minitest
+  mina
   minitest (~> 5.2.0)
   pry
   pry-debugger
@@ -132,4 +149,6 @@ DEPENDENCIES
   sinatra-asset-pipeline
   sinatra-contrib
   slim
+  therubyracer
   uglifier
+  unicorn

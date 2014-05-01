@@ -7,11 +7,13 @@ gem 'slim'
 gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
 gem 'sinatra-contrib'
 gem 'redis'
+gem 'unicorn'
 
 group :development do
   gem 'shotgun'
   gem 'pry'
   gem 'pry-debugger'
+  gem 'mina'
 end
 
 group :test do
@@ -29,4 +31,6 @@ end
 group :assets do
   gem 'sass'
   gem 'uglifier'
+  gem 'therubyracer'
+  gem 'execjs'
 end
