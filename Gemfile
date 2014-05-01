@@ -8,11 +8,10 @@ gem 'sinatra-asset-pipeline', require: 'sinatra/asset_pipeline'
 gem 'sinatra-contrib'
 gem 'redis'
 gem 'unicorn'
+gem 'foreman'
 
 group :development do
   gem 'shotgun'
-  gem 'pry'
-  gem 'pry-debugger'
   gem 'mina'
 end
 
@@ -26,6 +25,7 @@ end
 group :test, :development do
   gem 'rake'
   gem 'pry'
+  gem 'pry-debugger'
 end
 
 group :assets do
