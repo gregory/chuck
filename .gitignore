@@ -4,6 +4,7 @@
 .config
 .yardoc
 .sass-cache
+*.yml
 Gemfile.lock
 InstalledFiles
 _yardoc
