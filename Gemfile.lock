@@ -62,9 +62,6 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails-assets-bootstrap (3.1.1)
-      rails-assets-jquery (>= 1.9.0)
-    rails-assets-jquery (2.1.0)
     rake (10.1.1)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.3)
@@ -119,7 +116,6 @@ DEPENDENCIES
   minitest (~> 5.2.0)
   pry
   pry-debugger
-  rails-assets-bootstrap
   rake
   redis
   sass
