@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
   not_found{ slim :'404' }
   error    { slim :'500' }
 
+  helpers Sinatra::ContentFor
   helpers do
     def find_template(views, name, engine, &block)
       views.each{ |v| super(v, name, engine, &block) }

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    backports (3.6.0)
     capybara (2.2.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -82,6 +83,13 @@ GEM
       sprockets
       sprockets-helpers
       sprockets-sass
+    sinatra-contrib (1.4.2)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -122,5 +130,6 @@ DEPENDENCIES
   shotgun
   sinatra (~> 1.4.4)
   sinatra-asset-pipeline
+  sinatra-contrib
   slim
   uglifier
