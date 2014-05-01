@@ -23,6 +23,10 @@ module Presenters
         @developer||= @redis_key.gsub("chuck:servers:", "")
       end
 
+      def github_url
+        self.class.github_url(self.branch)
+      end
+
       def server_url
         self.class.server_url(self.developer)
       end

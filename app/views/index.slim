@@ -1,12 +1,19 @@
-h1 Deployment logs
-ul
-  - @deploy_presenters.each do |presenter|
-    li
-      header
-        h2
-          a target='_blank' href=presenter.server_url =presenter.developer
-      article
-        p
-          a target='_blank' href=presenter.jira_url =presenter.branch
-          =" deployed at #{presenter.deploy_time}"
+- content_for :styles do
+  ="stories"
+
+.row
+  h1 Deployment logs
+.row
+  ul
+    - @deploy_presenters.each do |presenter|
+      li.deploy_log
+        header
+          h2
+            a target='_blank' href=presenter.server_url =presenter.developer
+        article
+          p
+            a target='_blank' href=presenter.jira_url =presenter.branch
+            =" deployed at #{presenter.deploy_time}"
+        footer
+          a.btn.btn-primary target='_blank' href=presenter.github_url = "Compare"
 

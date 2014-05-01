@@ -7,5 +7,7 @@ html
     =stylesheet_include_tag 'application'
     /[if lt IE 9]
       script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    =stylesheet_include_tag yield_content(:styles)
   body
-    =yield
+    .container
+      =yield
