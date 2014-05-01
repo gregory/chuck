@@ -36,7 +36,7 @@ module Presenters
       end
 
       def self.server_url(developer)
-        "http://#{developer}.leasearsocial.com"
+        "http://#{developer}.rcqrmoappro001.leasestar.local/"
       end
 
       def self.github_url(branch)
