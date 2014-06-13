@@ -14,6 +14,19 @@
           p
             a target='_blank' href=presenter.jira_url =presenter.branch
             =" deployed at #{presenter.deploy_time}"
-        footer
+          table
+            thead
+              tr
+                th time
+                th desc
+                th sha
+            tbody
+              -presenter.diff_master.each do |diff|
+                tr
+                  td=diff[:time]
+                  td=diff[:log]
+                  td
+                    a href=Presenters::Logs::Deploy.commit_url(diff[:sha]) target='_blank' =diff[:sha]
+          footer
           a.btn.btn-primary target='_blank' href=presenter.github_url = "Compare"
 

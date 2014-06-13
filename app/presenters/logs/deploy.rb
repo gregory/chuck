@@ -1,10 +1,11 @@
 module Presenters
   module Logs
     class Deploy
+      include Memoizable
       extend Forwardable
 
       attr_reader :branch, :diff_master, :sha
-      def_delegators :@deploy, :branch, :diff_master, :sha, :datetime
+      def_delegators :@deploy, :branch, :sha, :datetime
 
       def initialize(argsH)
         @deploy    = argsH.fetch(:deploy)
@@ -14,6 +15,12 @@ module Presenters
       def deploy_time
         @deploy_time ||= DateTime.parse(self.datetime).strftime("%F %I:%M%p")
       end
+
+      def diff_master
+        diffs = @deploy.diff_master.map{|diff| diff.match(/(\S*)\s(.*)\((.*),\s(.*)\)/) }
+        diffs.map{|match| {sha: match[1], log: match[2], author: match[3], time: match[4]}}
+      end
+      memoize :diff_master
 
       def jira_story
         @jira_story ||= self.branch[/RMO-[0-9]*/, 0]
