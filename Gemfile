@@ -9,6 +9,7 @@ gem 'sinatra-contrib'
 gem 'redis'
 gem 'unicorn'
 gem 'foreman'
+gem 'memoizable'
 
 group :development do
   gem 'shotgun'
