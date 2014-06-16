@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  set :environment, ENV['RACK_ENV'] || :development
   set :public_folder, File.dirname(__FILE__) + '/../../public'
   set :views, [(File.dirname(__FILE__)+ '/../views'), (File.dirname(__FILE__) + '/../../public') ]
   set :assets_css_compressor, :sass

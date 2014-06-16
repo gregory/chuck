@@ -1,12 +1,14 @@
 - content_for :styles do
   ="stories"
+- content_for :js do
+  ="stories"
 
 .row
-  h1 Deployment logs
-.row
-  ul
+  h1 Deployment logz
+.row data-ng-app="stories"
+  ul[data-ng-controller="listController"]
     - @deploy_presenters.each do |presenter|
-      li.deploy_log
+      li.deploy_log data-ng-init="devs.#{presenter.developer}={hide_commits: false}"
         header
           h2
             a target='_blank' href=presenter.server_url =presenter.developer
@@ -14,19 +16,26 @@
           p
             a target='_blank' href=presenter.jira_url =presenter.branch
             =" deployed at #{presenter.deploy_time}"
-          table
+          table.table.table-striped
             thead
               tr
                 th time
                 th desc
                 th sha
             tbody
-              -presenter.diff_master.each do |diff|
+              -presenter.diff_master[0..9].each do |diff|
                 tr
                   td=diff[:time]
                   td=diff[:log]
                   td
                     a href=Presenters::Logs::Deploy.commit_url(diff[:sha]) target='_blank' =diff[:sha]
+                -presenter.diff_master[9..-1].each do |diff|
+                  tr data-ng-show="devs.#{presenter.developer}.hide_commits"
+                    td=diff[:time]
+                    td=diff[:log]
+                    td
+                      a href=Presenters::Logs::Deploy.commit_url(diff[:sha]) target='_blank' =diff[:sha]
           footer
-          a.btn.btn-primary target='_blank' href=presenter.github_url = "Compare"
+          a.btn.btn-primary target='_blank' href=presenter.github_url Compare
+          button.btn.btn-warning data-ng-click="hide_commits_for_dev(devs.#{presenter.developer})"  Show All Commits
 
