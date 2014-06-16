@@ -14,6 +14,7 @@ gem 'memoizable'
 group :development do
   gem 'shotgun'
   gem 'mina'
+  gem 'rack-livereload'
 end
 
 group :test do

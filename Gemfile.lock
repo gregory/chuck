@@ -71,6 +71,8 @@ GEM
       debugger (~> 1.3)
       pry (~> 0.9.10)
     rack (1.5.2)
+    rack-livereload (0.3.15)
+      rack
     rack-protection (1.5.1)
       rack
     rack-test (0.6.2)
@@ -150,6 +152,7 @@ DEPENDENCIES
   minitest (~> 5.2.0)
   pry
   pry-debugger
+  rack-livereload
   rake
   redis
   sass
