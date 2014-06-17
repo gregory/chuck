@@ -10,6 +10,7 @@ gem 'redis'
 gem 'unicorn'
 gem 'foreman'
 gem 'memoizable'
+gem "coffee-script"
 
 group :development do
   gem 'shotgun'
