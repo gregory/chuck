@@ -6,6 +6,8 @@
 .yardoc
 .sass-cache
 *.yml
+shared/**/.pid
+shared/log/*
 Gemfile.lock
 vendor/*
 InstalledFiles
