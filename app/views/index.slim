@@ -8,6 +8,7 @@
 .row data-ng-app="stories"
   ul[data-ng-controller="listController"]
     - @deploy_presenters.each do |presenter|
+      - next if presenter.diff_master.empty?
       li.deploy_log data-ng-init="devs.#{presenter.developer}={hide_commits: false}"
         header
           h2
