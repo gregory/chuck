@@ -13,7 +13,8 @@ Here is what you should add to your deploy.rb
       desc "Log the deploy"
       task :deploy do
         branch_name = ``git rev-parse --abbrev-ref HEAD``.strip
-        diff_master = ``git log master..#{branch_name}``.gsub(/\e\[[0-9]{0,2}m*/, '').split(/\n/)
+        json_format ='{%C(yellow)"sha":"%h", %C(red)"author":"%an", %C(green)"time":"%cr", %Creset"subject":"%s"}'
+        diff_master = `git log --pretty=format:'#{json_format}' release..#{branch_name}`.gsub(/\e\[[0-9]{0,2}m*/, '').split(/\n/)
         developer   = ``git config user.name``.strip
 
         data = {

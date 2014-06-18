@@ -17,8 +17,10 @@ module Presenters
       end
 
       def diff_master
-        diffs = @deploy.diff_master.map{|diff| diff.match(/(\S*)\s(.*)\((.*),\s(.*)\)/) }
-        diffs.map{|match| {sha: match[1], log: match[2], author: match[3], time: match[4]}}
+        diffs = @deploy.diff_master.map{|diff| JSON.parse(diff) }
+        diffs.map{|h| {sha: h['sha'], log: h['subject'], author: h['author'], time: h['time']}}
+      rescue
+        return []
       end
       memoize :diff_master
 
